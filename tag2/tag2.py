@@ -19,9 +19,9 @@ with open(PUZZLE_FILE,"r") as file:
         passwd = passwd.strip()
         pass_list.append((low_range, high_range,req_char,passwd))
     
-    p1_valid_passwords = 0
-    p2_valid_passwords = 0
+    
     #Part1
+    p1_valid_passwords = 0
     for  lo_r,hi_r, req_char, pw in pass_list:
         if lo_r <= pw.count(req_char) <= hi_r:
             p1_valid_passwords += 1
@@ -33,6 +33,7 @@ with open(PUZZLE_FILE,"r") as file:
     print("Part1 - valids Passwords: ",p1_valid_passwords)
     
     #Part2
+    p2_valid_passwords = 0
     for  lo_r,hi_r, req_char, pw in pass_list:
         if (pw[lo_r-1] == req_char or pw[hi_r-1] == req_char)\
            and not (pw[lo_r-1] == req_char and pw[hi_r-1] == req_char):
