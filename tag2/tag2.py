@@ -34,7 +34,7 @@ with open(PUZZLE_FILE,"r") as file:
     
     #Part2
     for  lo_r,hi_r, req_char, pw in pass_list:
-        if (pw[lo_r-1] == req_char or pw[hi_r-1] == req_char)\ 
+        if (pw[lo_r-1] == req_char or pw[hi_r-1] == req_char)\
            and not (pw[lo_r-1] == req_char and pw[hi_r-1] == req_char):
             p2_valid_passwords += 1
             if DEBUG:
