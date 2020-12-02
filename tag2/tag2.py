@@ -7,7 +7,7 @@ Created on Tue Dec  1 23:30:25 2020
 """
 
 DAY = 2
-
+DEBUG = False
 PUZZLE_FILE = f"t{DAY}puzzle.input"
 
 with open(PUZZLE_FILE,"r") as file:
@@ -25,9 +25,11 @@ with open(PUZZLE_FILE,"r") as file:
     for  lo_r,hi_r, req_char, pw in pass_list:
         if lo_r <= pw.count(req_char) <= hi_r:
             p1_valid_passwords += 1
-            print("Ok: ",pw)
+            if DEBUG:
+                print("Ok: ",pw)
         else:
-            print("Not OK: ", pw)
+            if DEBUG:
+                print("Not OK: ", pw)
     print("Part1 - valids Passwords: ",p1_valid_passwords)
     
     #Part2
@@ -35,9 +37,11 @@ with open(PUZZLE_FILE,"r") as file:
         if (pw[lo_r-1] == req_char or pw[hi_r-1] == req_char) and not \
            (pw[lo_r-1] == req_char and pw[hi_r-1] == req_char):
             p2_valid_passwords += 1
-            print(f"Ok: {lo_r}-{hi_r} {req_char}:{pw}" )
+            if DEBUG:
+                print(f"Ok: {lo_r}-{hi_r} {req_char}:{pw}" )
         else:
-            print("Not OK: ", pw)
+            if DEBUG:
+                print("Not OK: ", pw)
     print("Part2 - valids Passwords: ",p2_valid_passwords)
     
     
