@@ -18,8 +18,7 @@ with open(PUZZLE_FILE,"r") as file:
         low_range, high_range = [int(number) for number in pwrange.split("-")]
         passwd = passwd.strip()
         pass_list.append((low_range, high_range,req_char,passwd))
-    
-    
+        
     #Part1
     p1_valid_passwords = 0
     for  lo_r,hi_r, req_char, pw in pass_list:
