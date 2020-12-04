@@ -26,11 +26,7 @@ def parse_passport_file(pass_input,debug=DEBUG):
     tmp_dict = {}
     for line in pass_input:
         if line is not "\n":
-            itemlist = [elem.split(":") for elem in line.split()]
-            for key, value in itemlist:
-                if key in tmp_dict:
-                    print(f"Warning: Doppelter Eintrag im Pass: {key}")
-                tmp_dict[key] = value
+            tmp_dict.update(dict([elem.split(":") for elem in line.split()]))
         else:
             if debug: 
                 print(f"Gefundener Satz: {tmp_dict}\n")
