@@ -18,7 +18,7 @@ def load_input(filename = PUZZLE_FILE ):
         input_lines = file.readlines()
     return input_lines
 
-def walk_through_tag3_part1(filename = PUZZLE_FILE, debug=False):
+def walk_through_tag3_part1(filename = PUZZLE_FILE, debug=DEBUG):
     pattern = [line.strip() for line in load_input(filename)]
     if debug:
         for line in pattern[:5]:
@@ -40,30 +40,30 @@ def walk_through_tag3_part1(filename = PUZZLE_FILE, debug=False):
                 print("".join(mark_pos))
     print(f"Part1 Solution: {tree_counter} Trees ")
 
-def slope_step(step_right,pattern,debug=False):
+def slope_step(step_right,pattern,debug=DEBUG):
     tree_counter= 0
     line_length = len(pattern[0])
     for nr,line in enumerate(pattern[1:]):
         if line[(step_right + nr*step_right)%line_length] == "#":
-#            if debug:
-#                mark_pos = list(line)
-#                mark_pos[(step_right + nr*step_right)%line_length] = "X"
-#                print("".join(mark_pos))
+            if debug:
+                mark_pos = list(line)
+                mark_pos[(step_right + nr*step_right)%line_length] = "X"
+                print("".join(mark_pos))
             tree_counter += 1
-#        elif debug:
-#                mark_pos = list(line)
-#                mark_pos[(step_right + nr*step_right)%line_length] = "O"
-#                print("".join(mark_pos))
-    #if debug:
-    print(f"Right:{step_right} Down: 1 Trees: {tree_counter}")
+        elif debug:
+                mark_pos = list(line)
+                mark_pos[(step_right + nr*step_right)%line_length] = "O"
+                print("".join(mark_pos))
+    if debug:
+        print(f"Right:{step_right} Down: 1 Trees: {tree_counter}")
     return tree_counter
 
-def walk_through_tag3_part2(filename = PUZZLE_FILE, debug=False):
+def walk_through_tag3_part2(filename = PUZZLE_FILE, debug=DEBUG):
     pattern = [line.strip() for line in load_input(filename)]
-#    if debug:
-#        for line in pattern:
-#            print(line)
-#        print("".center(20,"-"))
+    if debug:
+        for line in pattern:
+            print(line)
+        print("".center(20,"-"))
     tree_counter = 1 
     slopes = [1,3,5,7]
     for col_step in slopes:
@@ -78,6 +78,6 @@ def walk_through_tag3_part2(filename = PUZZLE_FILE, debug=False):
     
 if __name__=="__main__":
     print(" Part 1 ".center(30,"-"))
-    walk_through_tag3_part1(debug=True)
+    walk_through_tag3_part1()
     print(" Part 2 ".center(30,"-"))
     walk_through_tag3_part2()
