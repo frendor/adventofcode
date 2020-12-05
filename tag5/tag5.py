@@ -6,6 +6,8 @@ Created on Tue Dec  5 2020
 @author: frendor
 """
 
+from math import floor 
+
 DAY = 5
 DEBUG = False
 
@@ -54,7 +56,8 @@ def find_free_seat(boarding_passes,debug=DEBUG):
     for seat in all_seat_ids:
         if  ((seat-1) not in all_seat_ids)\
         and ((seat+1) not in all_seat_ids):
-            print("Part2: Das wird mein Platz sein:",seat)
+            print("Part2: Das wird mein Platz sein: {}".format(seat)\
+                 +" (Reihe {} Sitzplatz {})".format(floor(seat/8), seat%8))
     #Going through by columns and rows: Problem with aisles/windowseats 
     #all_seats = dict([(row,[sid(row,col) for col in range(8)]) for row in range(128)])            
     #    for row,cols in all_seats.items():
