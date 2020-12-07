@@ -25,7 +25,7 @@ def load_input(filename = PUZZLE ):
     
 def iter_bags_part1(bag_color,bag_dict):
     bag_content = bag_dict[bag_color].transpose()[1]
-    return any([True if next_bag_color == "shiny gold" or (next_bag_color!="" and iter_bags_part1(next_bag_color,bag_dict)) else False for next_bag_color in bag_content])
+    return any([((next_bag_color == "shiny gold") or (next_bag_color!="" and iter_bags_part1(next_bag_color,bag_dict))) for next_bag_color in bag_content])
 
 def iter_bags_part2(bag_color,bag_dict, debug=DEBUG):    
     result = sum([int(nr)*(1+ iter_bags_part2(next_bag_color,bag_dict)) if nr.isnumeric() else 0 for nr, next_bag_color in bag_dict[bag_color] ])
