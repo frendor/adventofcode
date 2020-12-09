@@ -6,7 +6,6 @@ Created on 2020-12-08
 @author: frendor
 """
 
-
 DAY = 8
 DEBUG = False
 
@@ -80,7 +79,6 @@ def oper_list_tester(oper_list, debug=DEBUG):
     
 if __name__ == "__main__":
     oper_list = load_input(PUZZLE)
-
     #Part 1:
     is_loop, in_boundary, accumulator = oper_list_runner(oper_list,debug=DEBUG)
     print(f"Part1: Loops starts now. (Loop-Detection: {is_loop}) final accumulator: {accumulator}")
