@@ -6,8 +6,6 @@ Created on Wed Dec 10 2020
 @author: frendor
 """
 
-import numpy as np
-
 DAY = 10
 
 PUZZLE = f"t{DAY}puzzle.input"
@@ -34,8 +32,7 @@ def part2_adapter_combinations(adapter_diff_list):
     chain_factor_dict = {0:1, 1:1, 2:2, 3:4, 4:7} # solved with pencil&paper
     chain_factors = [chain_factor_dict[len(chain)] for chain in chain_list]
     rec_multi = lambda numbers,func: numbers[0] * func(numbers[1:],rec_multi) if len(numbers)>1 else numbers[0] 
-    return rec_multi(chain_factors,rec_multi)
-    
+    return rec_multi(chain_factors,rec_multi) 
           
 if __name__ == "__main__":
     puzzle_input = load_input()
