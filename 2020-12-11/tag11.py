@@ -7,7 +7,7 @@ Created on Fri Dec 11 14:31:45 2020
 """
 
 import numpy as np
-
+import time
 DAY = 11
 
 VERBOSE = True
@@ -41,16 +41,7 @@ in_field = lambda field,row,col: 0<=row<field.shape[0] and 0<=col<field.shape[1]
 
 def part2_will_state_switch(field,row,col):
     max_len = np.max([field.shape[0]-row, field.shape[1]-col,row,col])
-    theta_set = [np.array([-1,-1]),
-                 np.array([-1, 0]),
-                 np.array([-1, 1]),
-                 np.array([0, -1]),
-                 np.array([0, 1]),
-                 np.array([1, -1]),
-                 np.array([1, 0]),
-                 np.array([1, 1])
-                ]
-                
+    theta_set = [ np.array([nrow,ncol]) for nrow in [-1,0,1] for ncol in [-1,0,1] if not (nrow==ncol and nrow == 0) ] 
     switch_list = []
     for theta in theta_set:
         for r in range(1,max_len):   
@@ -61,8 +52,6 @@ def part2_will_state_switch(field,row,col):
             elif field[coords[0],coords[1]] == "#":
                 switch_list.append(1)
                 break
-
-            
     if field[row][col] == "L" and sum(switch_list)==0:
         return True
     elif field[row][col] == "#" and sum(switch_list)>=5:
@@ -71,13 +60,14 @@ def part2_will_state_switch(field,row,col):
         return False
         
 def one_step(field,part=1):
-    will_state_switch = {1:part1_will_state_switch,
+    will_switch_state = {1:part1_will_state_switch,
                          2:part2_will_state_switch}[part]
+    
     row_len, col_len = field.shape
     new_field = field.copy()
     for row in range(row_len):
         for col in range(col_len):
-            if will_state_switch(field,row,col):
+            if will_switch_state(field,row,col):
                 new_field[row][col] = {"L":"#", "#":"L"}[field[row][col]]
     return new_field
 
