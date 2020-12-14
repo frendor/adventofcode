@@ -7,7 +7,7 @@ Created on Fri Dec 11 14:31:45 2020
 """
 
 import numpy as np
-import time
+
 DAY = 11
 
 VERBOSE = True
