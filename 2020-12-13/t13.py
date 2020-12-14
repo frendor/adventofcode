@@ -77,7 +77,7 @@ if __name__ == "__main__":
     
     good_solution = tool_solution(bus_list)
     
-    timestamp = find_timestamp2(bus_list,good_solution,verbose=False)
+    timestamp = find_timestamp2(bus_list,good_solution)
     
     print(f"Part2: {timestamp}")
     
