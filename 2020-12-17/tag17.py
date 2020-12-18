@@ -18,11 +18,11 @@ def load_input(filename = EXAMPLE ):
 
 def nearby_cubes(pocket_state, position,wdim=False):
     x,y,z,w = position
-    return {(dx,dy,dz,wdim*dw):pocket_state.setdefault((dx,dy,dz,wdim*dw),False) for dx in range(x-1,x+2)
-                                                                    for dy in range(y-1,y+2) 
-                                                                    for dz in range(z-1,z+2)
-                                                                    for dw in range(w-1,w+2)
-                                                                       if any([(x-dx),(y-dy),(z-dz),wdim*(w-dw)])}
+    return {(dx,dy,dz,wdim*dw):True for dx in range(x-1,x+2)
+                                    for dy in range(y-1,y+2) 
+                                    for dz in range(z-1,z+2)
+                                    for dw in range(w-1,w+2)
+                                    if any([(x-dx),(y-dy),(z-dz),wdim*(w-dw)]) and pocket_state.setdefault((dx,dy,dz,wdim*dw),False)}
 
 def cycle_pocket_state(pocket_state, wdim=False):
     if len(list(pocket_state.keys())[0]) == 2:
