@@ -10,9 +10,6 @@ DAY = 17
 
 PUZZLE = f"t{DAY}puzzle.input"
 EXAMPLE = f"t{DAY}puzzle.example"
-EXAMPLE2 = f"t{DAY}puzzle.example2"
-
-range_with_endpoint = lambda low, high: range(low,high+1)
 
 def load_input(filename = EXAMPLE ):
     with open(filename,"r") as file:
