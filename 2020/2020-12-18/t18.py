@@ -52,7 +52,6 @@ def recursive_eval(match,adv=False):
 def evaluate_adv_list(math_list,adv):
     total_sum = 0
     for math_line in math_list:
-        orig_line = math_line
         math_line = re.sub(r"(?P<term>.*)",lambda term: recursive_eval(term,adv), math_line)
         total_sum += int(math_line)
     return total_sum
