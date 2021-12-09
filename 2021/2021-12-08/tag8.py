@@ -34,7 +34,8 @@ def part2_decode_pattern(all_number_list, value_codes):
                 code_dict[9] = set(number)
 
     output_value = "".join([str(k) for digit in value_codes for k,v in code_dict.items() if set(digit) == v])
+    print(output_value)
     return int(output_value)
 
-print("Part2 Solution: ",sum([part2_decode_pattern(*line) for line in signal_list]))
+print("Part2 Solution: ",sum([part2_decode_pattern(*line) for line in example_list]))
     
