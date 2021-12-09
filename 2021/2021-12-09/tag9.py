@@ -12,7 +12,7 @@ print("Part1: Solution: ", sum([1+value for coords, value in cave_map.items() if
 def explore_basin(coords, map_dict, known_coords):
     known_coords.add(coords)
     neighbors = find_good_neighbor(coords,map_dict)
-    
+
     for new_coord in neighbors:
         if new_coord not in known_coords:
             known_coords = explore_basin(new_coord, map_dict, known_coords)
