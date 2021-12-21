@@ -1,7 +1,7 @@
 from math import floor, ceil
 from functools import reduce
 from itertools import permutations
-from copy import copy, deepcopy
+from copy import deepcopy
 
 def slice_int(some_string):
     if not some_string[0].isnumeric():
@@ -98,7 +98,6 @@ def check_split(number):
             
         elif part > 9:
             number[nr] = [floor(part/2), ceil(part/2)]
-            #print("Spalte ", number)
             return number, True
 
     return number, False
@@ -132,5 +131,4 @@ p1_puzzle = deepcopy(puzzle)
 #part1
 print(f"Part1: Magnitude: {calculate_magnitude(add_numberlist(p1_puzzle))}")
 # part2
-
 print("Part2: Hightest possible Magnitude: ", max([calculate_magnitude(add_numberlist(pair)) for pair in permutations(puzzle, 2)]))
