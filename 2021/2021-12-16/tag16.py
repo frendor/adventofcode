@@ -1,10 +1,10 @@
 from numpy import prod
+
 with open("t16example") as file:
     examples = file.read().split("\n")
 
 with open("t16examples2") as file:
     examples2 = file.read().split("\n")
-
 
 with open("t16input") as file:
     puzzle = file.readline().strip()
@@ -73,8 +73,7 @@ def analyse_operator_type1(content):
             values.append(val)
             version_sum += version
     result = type_dict[type_id](values)
-    return rest, version_sum , result
-    
+    return rest, version_sum , result 
 
 def analyse_packet(packet):
     if int(packet[3:6],2) == 4:
@@ -95,5 +94,5 @@ def analyse_signal(message):
 
 #for message in examples2:
 #    analyse_signal(message)
-#analyse_signal("38006F45291200")
+
 analyse_signal(puzzle)
