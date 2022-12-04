@@ -15,10 +15,9 @@ zyclic = "0120"
 enemy_choice = lambda c1: 'ABC'.index(c1)
 my_choice = lambda c2: 'XYZ'.index(c2)
 win_loss_score = lambda ec,mc: 6 if zyclic[zyclic.index(str(enemy_choice(ec))) + 1] == str(my_choice(mc)) else\
-                       3 if enemy_choice(ec) == my_choice(mc) else\
-                       0 
+                       3 if enemy_choice(ec) == my_choice(mc) else 0 
 
-score = sum([win_loss_score(c1,c2) +( "XYZ".index(c2)+1) for c1,c2 in data])
+score = sum([win_loss_score(c1,c2) + "XYZ".index(c2)+1 for c1,c2 in data])
 print(f"Part1: {score}")
 
 #part2
