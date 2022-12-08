@@ -9,13 +9,9 @@ Created on Thu Dec  8 20:18:58 2022
 with open("puzzle","r") as infile:
     data = [line.strip() for line in infile.readlines()]
     
-    
-#print(data)
 
 
-directories = {line.replace("dir ",""):[] for line in data if "dir" in line}
-
-ad = []
+pfad = lambda ad: "/" + "/".join(ad) + "/" if ad else "/"
 
 def change_dir(ad, command):
     if command.startswith("$ cd"):
@@ -28,12 +24,8 @@ def change_dir(ad, command):
             ad.append(param)
     return ad
 
-
-filesystem = {}
-
 ad = []
-pfad = lambda ad: "/" + "/".join(ad) + "/" if ad else "/"
-
+filesystem = {}
 
 while data:
     line = data.pop(0)
@@ -58,11 +50,6 @@ def dir_walk(directory):
         else:
             size += int(entry.split()[0])
     return size
-
-#def get_total_dir_size(directory):
-#    size = 0
-#    for entry in filesystem[directory]:
-#        
             
 ### Part1:
 print("Part1: ",sum([dir_walk(directory) for directory in filesystem.keys() if dir_walk(directory)<=100000]))
