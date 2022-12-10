@@ -8,18 +8,25 @@ Created on Fri Dec  9 22:36:31 2022
 
 from operator import itemgetter
 
-with open("example2","r") as infile:
+with open("puzzle","r") as infile:
     moves = [(d,int(v)) for line in infile.read().strip().split("\n") for d,v in [line.split()]]
 
-def print_field(positions):
+def print_field(positions,save_view=False):
     x_vals = [int(v.real) for v in positions]
     y_vals = [int(v.imag) for v in positions]
     xmin, xmax = min(x_vals)-1, max(x_vals)+1
     ymin, ymax = min(y_vals)-1, max(y_vals)+1
-    
+    output = ""
     for y in range(ymin, ymax):
-        print( "".join(["s" if x==0 and y == 0 else "#" if complex(x,y) in positions else "."  for x in range(xmin,xmax+1)]) )
-
+            output += "".join(["s" if x==0 and y == 0 else "#" if complex(x,y) in positions else "."  for x in range(xmin,xmax+1)]) 
+            output += "\n"
+    
+    print(output)
+    fid = len(positions)
+    if save_view:
+        with open(f"fieldview.{fid}","w") as outfile:
+            outfile.write(output)
+            
 directions = {'R':1,
               'L':-1,
               'U':-1j,
@@ -54,4 +61,4 @@ def rope_walker(part):
 for part in ["Part1","Part2"]:
     path = rope_walker(part)    
     print(f"{part}: ", len(path))
-    print_field(path)
+    print_field(path,True)
